@@ -46,8 +46,9 @@ export const App = () => {
   }
   return(
     <React.Fragment>
-      <InputTodo todoText={todoText} onChangeTodoText={onChangeTodoText} onClickAdd={onClickAdd}/>
-      <IncompleteTodos incompleteTodos={incompleteTodos} onClickComplete={onClickComplete} onClickDelete={onClickDelete}/>
+      <InputTodo todoText={todoText} onChangeTodoText={onChangeTodoText} onClickAdd={onClickAdd} disabled={incompleteTodos.length >= 5}/>
+      {incompleteTodos.length >= 5 && (<p style={{color: 'red'}}>登録できるtodoは5個までです。</p>)}
+      <IncompleteTodos incompleteTodos={incompleteTodos} onClickComplete={onClickComplete} onClickDelete={onClickDelete} />
       <CompleteTodos completeTodos={completeTodos} onClickBack={onClickBack}/>
     </React.Fragment>
   );
